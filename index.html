@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gerador de tabela verdade feito em javascript">
+    <meta name="author" content="Pedro Augusto">
+
+    <title>Gerador de table verdade</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Created by <font color=#03a9f4>Pedro Augusto</font></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	<div class="row">
+			<div class="col-xs-12 cab">
+		 		<h1>True Table Generator</h1>
+		  		<p>
+		  			Um gerador <strike>daquela tabela chata e sem graça que você, estudante de computação, provavelmente passou o 1º período inteiro se perguntado 'onde é que eu vou usar isso ?'</strike> de tabela verdade escrito em javascript para ajudar nos estudos. Enjoy!
+		  		</p>
+			</div>
+      	</div>
+	  	<hr>
+    	<div class="row">
+	    	<div class="col-md-4">
+	    		<div class="machine">
+				    <div class="calc-display" id="display" autofocus contenteditable="true">p^q</div>
+					<div class="calc-buttons">
+						<div class="calc-buttons-row">
+							<div class="calc-buttons-btn prep no-act">p</div>
+							<div class="calc-buttons-btn prep no-act">q</div>
+							<div class="calc-buttons-btn prep no-act">r</div>
+							<div class="calc-buttons-btn prep no-act">s</div>
+						</div>
+						<div class="calc-buttons-row">
+							<div class="calc-buttons-btn oper no-act">~</div>
+							<div class="calc-buttons-btn oper no-act">^</div>
+							<div class="calc-buttons-btn oper no-act">v</div>
+							<div class="calc-buttons-btn oper no-act">→</div>
+						</div>
+						<div class="calc-buttons-row">
+							<div class="calc-buttons-btn oper no-act">↔</div>
+							<div class="calc-buttons-btn oper no-act">+</div>
+							<div class="calc-buttons-btn oper no-act">(</div>
+							<div class="calc-buttons-btn oper no-act">)</div>
+						</div>
+						<div class="calc-buttons-row">
+							<div class="calc-buttons-btn ctrl" id="del-one">C</div>
+							<div class="calc-buttons-btn ctrl" id="del-all">AC</div>
+							<div class="calc-buttons-btn ctrl" id="eval">=</div>
+							<div class="calc-buttons-btn help" data-toggle="modal"
+							data-target="#myModal" id="help">?</div>
+						</div>
+						<div class="calc-buttons-row">
+				    		<p style="font-size: 16px;">
+				    			<input type="checkbox" name="theTruth" id="theTruth"/>Just give me some truth
+				    		</p>
+						</div>
+					</div>
+		  		</div>
+	    	</div>
+	    	<div class="col-md-8">
+	    		<div class="table-wrapper" id="txt">
+	    			<table class="table">
+	    				<tr>
+	    					<td class="title">p</td>
+	    					<td class="title">q</td>
+	    					<td class="title">p^q</td>
+	    				</tr>
+	    				<tr>
+	    					<td>F</td>
+	    					<td>F</td>
+	    					<td>F</td>
+	    				</tr>
+	    				<tr>
+	    					<td>F</td>
+	    					<td>V</td>
+	    					<td>F</td>
+	    				</tr>
+	    				<tr>
+	    					<td>V</td>
+	    					<td>F</td>
+	    					<td>F</td>
+	    				</tr>
+	    				<tr>
+	    					<td>V</td>
+	    					<td>V</td>
+	    					<td>V</td>
+	    				</tr>
+	    			</table>
+	    		</div>
+	    	</div>
+	    </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="exampleModalLabel">Ajuda</h3>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<p>Você pode escrever uma expressão clicando nos botões ou escrevendo diretamente no display.</p>
+	      	<p>Lista de comandos:</p>
+	      	<ul>
+	      		<li><b>p, q, r, s</b> - Váriaveis disponíveis</li>
+	      		<li><b>~</b> - Negação</li>
+	      		<li><b>^</b> - e </li>
+	      		<li><b>v</b> - ou</li>
+	      		<li><b>→</b> - Condicional</li>
+	      		<li><b>↔</b> - Bicondicional</li>
+	      		<li><b>+</b> - Ou exclusivo</li>
+	      		<li><b>C</b> - Exclui o último caractre</li>
+	      		<li><b>AC</b> - Limpa tudo</li>
+	      	</ul>
+	      	<p>Como foi feito: com eval e [['~', '!'], ['^', '&&'], ['v', '||'], ['-', '==='], ['+', '!==']] e muitos parenteses...</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    <script src="javascript/jqueryReal.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="javascript/ES6Main.js"></script>
+  </body>
+</html>
