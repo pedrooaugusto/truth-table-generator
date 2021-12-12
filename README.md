@@ -1,3 +1,3 @@
 # Truth Table Generator
-Um gerador de tabela verdade.
-<br />Confira em: https://pedrooaugusto.github.io/posts/gerador-tabela-verdade/
+
+Hosted live at: https://pedrooaugusto.github.io/live/truth-table-generator/
